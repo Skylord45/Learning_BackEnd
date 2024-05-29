@@ -18,9 +18,15 @@ const app = http.createServer((req, res) => {
     }
 });
 
-app.listen(8080);
+app.listen(8080, () => {
+    console.log("Server is created at port 8080");
+});
 
 
+const conne = require('mongoose')
 
+conne.connect('mongodb://localhost:27017/Dummy',{
 
-
+})
+.then(() => {console.log("Connected !!")})
+.catch((error) => {console.log("Error while connecting", error)})

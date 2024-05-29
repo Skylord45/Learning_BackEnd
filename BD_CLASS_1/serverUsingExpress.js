@@ -34,3 +34,11 @@ app.post('/api/car', (req, res) => {
      console.log(carBrand);
      res.send("Car data submitted succesfully");
 })
+
+
+// connect to server
+const mongo = require('mongoose');
+mongo.connect('mongodb://localhost:27017/myDatabase',{  // this is a promise
+})
+.then(() => {console.log("DataBase connected succesfully")})
+.catch((err) => {console.log("Error while connecting DataBase",err)})
