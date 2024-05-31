@@ -1,4 +1,4 @@
-const Todo = require('../models/createTodo.model.js')
+const Todo = require('../models/todo.model.js')
 
 
 // direct export (new syntext)
@@ -10,8 +10,8 @@ exports.createTodo = async(req, res) => {
         const {title, description} = req.body
     
         // validation
-        if(!title || !description){
-            console.log("Please enter title or description !!")
+        if(! title || ! description){
+            console.error("Please enter title or description !!")
         }
 
         // create object of title and description and create a new entry in database

@@ -21,21 +21,21 @@ app.use(express.json());
 
 
 // import todoRoutes for mapping
-const todoRouter = require('./router/createTodo.router.js')
+const todoRouter = require('./router/todo.router.js')
 
 // (4) we need to mount this todoRoute API to versioning like (api/v1)
 // we use app.use middleware for that
 
 app.use("/api/v1", todoRouter);
 
-// // create simple router => home page
-// app.get('/', (req, res) => {
-//     res.send("Home page");
-// })
-// // about page
-// app.get('/about', (req, res) => {
-//     res.send("about page");
-// })
+// create simple router => home page
+app.get('/', (req, res) => {
+    res.send("Home page");
+})
+// about page
+app.get('/about', (req, res) => {
+    res.send("about page");
+})
 
 // (5) start server
 app.listen(port, () => {
