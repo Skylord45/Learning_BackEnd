@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const likeSchema = new mongoose.Schema({
 
     post : {
-        type : mongoose.Schema.Types.ObjectId,
+        type : mongoose.Schema.Types.ObjectId,   // on which post you are like
         ref : "Post"  //reference to the post model
     },
     user : {
