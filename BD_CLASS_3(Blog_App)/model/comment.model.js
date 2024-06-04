@@ -16,7 +16,6 @@ const commentSchema = new mongoose.Schema({
         type : String,
         required : true,
     }
-
 }) 
 
 // export

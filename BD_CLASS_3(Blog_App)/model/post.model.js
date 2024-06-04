@@ -15,11 +15,11 @@ const postSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    like : [{
+    likes : [{
         type : mongoose.Schema.Types.ObjectId,   // who is like your post 
         ref : "Like" ////reference to the like model
     }],
-    Comment : [{
+    comments : [{
         type : mongoose.Schema.Types.ObjectId,  // who is comment your post 
         ref : "Comment" // //reference to the comment model
     }]

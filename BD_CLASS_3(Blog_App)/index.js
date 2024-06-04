@@ -10,9 +10,9 @@ app.use(express.json())
 
 
 // get router 
-const blog = require('./router/blog.router.js')
+const router = require('./router/blog.router.js')
 // mount
-app.use('/api/v1', blog);
+app.use('/api/v1', router);
 
 // import dataBase file 
 const DBconnection = require('./config/DataBase.js')
