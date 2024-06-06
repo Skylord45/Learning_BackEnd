@@ -17,7 +17,10 @@ exports.createComment = async (req, res) => {
             post, body, user
         })
 
-        // save new comment into a database
+        /*
+        when we use .save method than we must first create object which is saved to DB.  
+        */
+        // save new upper comment into a database
         const savedComment = await comment.save();
 
         // now we need to update in comments array of post and add new id
