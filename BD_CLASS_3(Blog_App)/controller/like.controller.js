@@ -18,7 +18,7 @@ exports.likePost = async(req, res) => {
         const {post, user} = req.body
     
         // create object of like and
-        const like =  new like({
+        const like =  new Like({
             post, user
         })
     
@@ -26,7 +26,7 @@ exports.likePost = async(req, res) => {
         const savedLike = await like.save();
     
         // find that post._id into Post db and update like array 
-        const updatedPost = await Post.findByIdAndUpdate(post, {$push : {likes : savedLike._id}},{new : true})
+        const updatedPost = await Post.findByIdAndUpdate(post, {$push : {likes : savedLike._id}},{new : true}).populate("likes")
     
         res.status(200)
         .json({
@@ -48,5 +48,24 @@ exports.likePost = async(req, res) => {
 & like_id  => when you will like on some post than generate like_id give that id for dislike
 */
 exports.unlikePost = async(req, res) => {
+    try {
+
+        const {post, like} = req.body; // both are id's
+        const deleteLike = await Like.findOneAndDelete({post : post, _id : like}, {new : true});
+
+        const updatedPost = await Post.findByIdAndUpdate(post, {$pull : { likes: deleteLike._id }}, { new : true });
+
+        res.status(200).json({
+            data : updatedPost
+        })
+        
+    } 
+    catch (error) {
+        return res.status(500)
+        .json({
+            data : "Error while unLike a post",
+            message : error.message
+        })
+    }
 
 }
